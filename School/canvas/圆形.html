@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>0317 2班周文强 圆形进度条</title>
+		<style>
+			#canvas{
+				border: 1px solid blue;
+			}
+			#show{
+				margin-top: -100px;
+				width: 500px;
+				text-align: center;
+				font-size: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="500px" height="600px">
+			替代文字：您的浏览器不能正常识别canvas
+		</canvas>
+		<div id="show"></div>
+	</body>
+	<script>
+		window.onload=function(){
+			var canvas=document.getElementById("canvas");
+			var context=canvas.getContext("2d");
+			context.clearRect(0,0,canvas.width,canvas.height);
+			//context.fillStyle="red";
+			context.strokeStyle="blue";
+			var x=250;
+			var y=250;
+			var r=200;
+			var an=0;
+			var n=1
+			var show=document.getElementById("show");
+			show.innerHTML="当前进度："+Math.floor(an/360*100,2)+"%";
+			var timer=setInterval(function(){
+				if(n%2==1){
+					context.fillStyle="green";
+				}
+				else {
+				     context.fillStyle="red";
+			    }
+				an=an+10;
+				n++;
+				context.beginPath();
+				context.moveTo(x,y);
+				context.arc(x,y,r,0,an*Math.PI/180);
+				context.closePath();
+				context.fill();
+				show.innerHTML="当前进度："+Math.floor(an/360*100,2)+"%";
+				if(an==3600){clearInterval(timer);}
+			},1000);
+		}
+	</script>
+</html>

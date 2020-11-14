@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<title>0330 2班00刘刘 复习利用canvas+js画图像</title>
+<style>
+
+</style>
+<script>
+ //侦听window的load事件
+ window.onload=function(){
+   //1.获取画布id=g
+   var g=document.getElementById("g");
+   //2.获取画布的画笔
+   var cg=g.getContext("2d");
+   //3.准备图像
+   var image=new Image();
+   image.src="NPC5.png";
+   //侦听一下image
+   image.onload=function(){
+   //4.1画原图像，在画面上不改变大小，只改变位置
+   //格式1，人为指定画布上的位置：你说了算
+   //cg.drawImage(image,100,100);
+   //格式2，人为指定画布上的位置、大小：你说了算
+   //cg.drawImage(image,10,10,320,520);
+   //格式3，人为指定画布上的位置（包括间距）、大小（包括间距）：你说了算
+   //*****原图像：精确计算坐标和宽度高度：利用原图像的高度和宽度均分：NPC5的图像的每个小女孩：
+  //宽度=160/4，高度=260/4
+  //每行小女孩等高y相同，但第1个小女孩的x为0，其他每个小女孩的x是左边小女孩的宽度和5+
+  //第1行小女孩的y为0，其他每行小女孩的y是上面小女孩的高度和
+   //将一图分成4行4列
+   var n=4;
+   var w=image.width/4;//原
+   var h=image.height/4;//原
+   var i=1;
+   var j=1;
+   var x1=0;//原
+   var y1=0;//原
+   var x2=5;//c
+   var y2=5;//c
+   //看懂了x1,y1,x2,y2的变化后，找一找它们和i、j的规律：x轴变化和j有关，y轴变化和i有关——
+   cg.drawImage(image,x1,y1,w,h,x2,y2,2*w,2*h);
+   x1=x1+w;//x1=(j-1)*w
+   x2=x2+5+2*w;//x2=j*5+(j-1)*2*w;
+   cg.drawImage(image,x1,y1,w,h,x2,y2,2*w,2*h);
+   x1=x1+w;
+   x2=x2+5+2*w;
+   cg.drawImage(image,x1,y1,w,h,x2,y2,2*w,2*h);
+   x1=x1+w;
+   x2=x2+5+2*w;
+   cg.drawImage(image,x1,y1,w,h,x2,y2,2*w,2*h);
+   x1=0;
+   x2=5;
+   y1=y1+h;//y1=(i-1)*h
+   y2=y2+5+2*h;//y2=5*i+(i-1)*2*h;
+   cg.drawImage(image,x1,y1,w,h,x2,y2,2*w,2*h);
+   x1=x1+w;
+   x2=x2+5+2*w;
+   cg.drawImage(image,x1,y1,w,h,x2,y2,2*w,2*h);
+   x1=x1+w;
+   x2=x2+5+2*w;
+   cg.drawImage(image,x1,y1,w,h,x2,y2,2*w,2*h);
+   x1=x1+w;
+   x2=x2+5+2*w;
+   cg.drawImage(image,x1,y1,w,h,x2,y2,2*w,2*h);
+ }
+}
+</script>
+<body>
+ <canvas id="g" width="500px" height="500px" style="border:1px blue solid;">
+  替代文字2
+ </canvas>
+
+</body>

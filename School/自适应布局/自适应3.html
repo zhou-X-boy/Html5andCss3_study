@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta charset="utf-8">
+		<title>自适应网格分布</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: pink;
+			}
+			div#all{
+				background-color: white;
+				width: 90%;
+				min-width: 600px;
+				max-width: 960px;
+				margin: 0 auto;
+				margin-top: 4vh;
+			}
+			
+			div#mid{
+				margin-top: 4vh;
+				height: 200px;
+				border: 1px solid blue;
+				column-count: 2;
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -o-box;
+				display: box;/* 并排,默认水平并排,可以用box-orient改成垂直并排 */
+			}
+			div#mid section#left{
+				width: 1%;
+				-webkit-box-flex: 3;/* 水平方向上的37开 */
+				-moz-box-flex: 3;
+				-ms-box-flex:3;
+				-o-box-flex:3;
+				box-flex: 3;
+			}
+			div#mid section#right{
+				width: 1%;
+				-webkit-box-flex: 7;/* 水平方向上的37开 */
+				-moz-box-flex: 7;
+				-ms-box-flex:7;
+				-o-box-flex:7;
+				box-flex: 7;
+			}
+			
+			div#bottom{
+				display: flex;/* 并排,默认水平并排 */
+				margin-top: 20px;
+			}
+			div#bottom div:nth-child(1){
+				width: 30%;
+			}
+			div#bottom div:nth-child(2){
+				width: 70%;
+				border: 1px solid blue;
+			}
+			div#bottom div{
+				flex: grow;/* 均分,缩写版 */
+			}
+			div#bottom_right{
+				padding: 0.3rem;
+				box-sizing: border-box;
+				display: flex;
+				/* justify-content: space-between; *//* 两端对齐 */
+				justify-content: space-around;/* 平均分布 */
+			}
+			div#bottom_right dl{
+				width: 20%;
+				padding: 0.3rem;
+				box-sizing: border-box;
+				border: 1px solid red;
+			}
+			div#bottom_right dl dt{
+				width: 90%;
+				
+			}
+			div#bottom_right dl dt img{
+				/* 图片自适应 */
+				width: 100%;
+				height: auto;
+			}
+			div#bottom_right dl dd h4{
+				text-align: center;
+			}
+			div#bottom_right dl dd>div{
+				display: flex;
+			}
+			div#bottom_right dl dd>div>div:nth-child(1){
+				width: 45px;/* 因为要做圆形,局部使用固定高度宽度 */
+			    height: 45px;
+				background-color: orange;
+				color: white;
+				border: 1px solid orange;
+				border-radius: 50%;
+				text-align: center;
+				box-sizing: border-box;
+			}
+			div#bottom_right dl dd>div>div:nth-child(2){
+				width: 70%;
+				height: auto;
+			}
+			div#bottom_right dl dd>div>div:nth-child(2) span{
+				color: orange;
+				font-weight: bold;
+				font-size: 0.8em;/* 根据自己原来的字体大小倍数 */
+			}
+			div#bottom_left{
+				padding: 0.3rem;
+				box-sizing: border-box;
+			}
+			div#bottom_left ul{
+				height: 100%;
+				list-style: none;
+				display: grid;/* 网格布局 */
+				grid-template-rows: 60% 20% 20%;/* 每一行的高度 */
+				grid-template-columns: 100%;/* 每一列的宽度占比 */
+			    border: 1px solid black;
+			    grid-row-gap: 1%;/* 行间距 */
+			}
+			div#bottom_left ul li:nth-child(1){
+				border: 1px red solid;
+				text-align: center;
+				padding-top: 3%;
+				/* display: table-cell; *//* 做成"表格的格td" */
+				/* vertical-align: middle; */
+				
+			}
+			div#bottom_left ul li:nth-child(2),
+			div#bottom_left ul li:nth-child(3){
+				display: grid;
+				grid-template-rows: 100%;/* 每一行的高度占比 */
+				grid-template-columns: repeat(4,20%);/* repeat()重复相同的每一列的宽度占比 */
+				justify-content: space-around;/* 平均分布 */
+				grid-column-gap: 6.7%;/* 列间距 */
+			}
+			div#bottom_left ul li p{
+				height: 60%;
+				border: 1px red solid;
+				border-radius: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<!--自适应布局 相对单位：%,rem,em,vw,vh,min-width,max-width-->
+		<div id="all">
+			<!--html5布局的头部header-->
+			<header>
+				<!--导航条nav-->
+				<nav>
+					导航条
+				</nav>
+			</header>
+			
+			<!-- 网页中部 -->
+			<div id="mid">
+				<section id="left">
+					left
+				</section>
+				<section id="right">
+					right
+				</section>
+			</div>
+			<div id="bottom">
+				<div id="bottom_left">
+					<!-- 广告区域 -->
+					<!-- 产生三行三列 -->
+					<ul>
+						<li><img src="a.jpg" width="175px" height="100px"></li>
+						<li><!-- 子元素产生1行四列 -->
+							<p>下载1</p>
+						    <p>下载2</p>
+							<p>下载3</p>
+							<p>下载4</p>
+						</li>
+						<li><!-- 子元素产生1行四列 -->
+						    <p>网址1</p>
+							<p>网址2</p>
+							<p>网址3</p>
+							<p>网址4</p>
+							
+						</li>
+					</ul>
+				</div>
+				<div id="bottom_right">
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg" />
+						</dt>
+						<dd>
+							<h4>***X1/200*200</h4>
+							<h4>上新产品 ***</h4>
+							<div>
+								<div>奖励金</div>
+								<div>
+									<p>门店<span>1.00</span>元</p>
+									<p>门店<span>5.00</span>元</p>
+							    </div>
+							</div>
+						</dd>
+					</dl>
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg" />
+						</dt>
+						<dd>
+							<h4>***X1/200*200</h4>
+							<h4>上新产品 ***</h4>
+							<div>
+								<div>奖励金</div>
+								<div>
+									<p>门店<span>1.00</span>元</p>
+									<p>门店<span>5.00</span>元</p>
+							    </div>
+							</div>
+						</dd>
+					</dl>
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg" />
+						</dt>
+						<dd>
+							<h4>***X1/200*200</h4>
+							<h4>上新产品 ***</h4>
+							<div>
+								<div>奖励金</div>
+								<div>
+									<p>门店<span>1.00</span>元</p>
+									<p>门店<span>5.00</span>元</p>
+							    </div>
+							</div>
+						</dd>
+					</dl>
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg" />
+						</dt>
+						<dd>
+							<h4>***X1/200*200</h4>
+							<h4>上新产品 ***</h4>
+							<div>
+								<div>奖励金</div>
+								<div>
+									<p>门店<span>1.00</span>元</p>
+									<p>门店<span>5.00</span>元</p>
+							    </div>
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

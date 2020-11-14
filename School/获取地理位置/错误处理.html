@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>错误处理</title>
+    <script>
+        var loc;
+        function init() {
+            loc = document.getElementById("location");
+        }
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                loc.innerHTML = "你的浏览器不支持html5地理位置.";
+            }
+        }
+        // 当getCurrentPosition方法调用成功时调用该方法
+        function showPosition(position) {
+            loc.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        }
+        // 当getCurrentPosition调用失败时调用该方法
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    loc.innerHTML = "用户拒绝地理位置请求."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    loc.innerHTML = "位置信息不可用."
+                    break;
+                case error.TIMEOUT:
+                    loc.innerHTML = "获取位置信息请求超时."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    loc.innerHTML = "一个未知错误发生."
+                    break;
+            }
+        }
+    </script>
+</head>
+<body onLoad="init();">
+<p id="location">单击你的按钮获取你的位置:</p>
+<button onClick="getLocation()">获取地理位置信息</button>
+</body>
+</html>
+

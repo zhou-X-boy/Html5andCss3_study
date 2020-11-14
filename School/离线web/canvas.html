@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html manifest="0331mani.manifest">
+	<head>
+		<meta charset="utf-8">
+		<title>0330 2班02周文强 </title>
+	</head>
+	<body>
+		<div id="pic">
+		<img src="NPC5.png" id="img">
+		</div>
+		<canvas id="canvas1" width="200px" height="300px" style="border: blue 1px solid;">
+			识别不了
+		</canvas>
+		<canvas id="canvas2" width="400px" height="550px" style="border: blue 1px solid;">
+			识别不了
+		</canvas>
+        <canvas id="canvas3" width="200px" height="300px" style="border: blue 1px solid;">
+			识别不了
+		</canvas>
+		<script>
+			window.onload=function(){
+				//从右往左展开
+				var canvas1 = document.getElementById('canvas1');
+				 var ctx=canvas1.getContext("2d");
+				 var w1=10;
+				 var w2=canvas1.width-10;
+				 var timer=setInterval(function(){
+				 ctx.save()
+				 ctx.beginPath();
+				 ctx.rect(w2,0,w1,1000);
+				 ctx.closePath();
+				 ctx.clip();
+				 ctx.drawImage(image2,0,0,canvas1.width,canvas1.height);//格式2
+				 ctx.restore();//要用的时候恢复一下以前的绘图状态
+				 w1=w1+10;
+				 w2=w2-10
+				 },100);
+				 //n宫格
+				 var canvas2 = document.getElementById('canvas2');
+				 var context2 = canvas2.getContext('2d');
+				 context2.clearRect(0,0,canvas2.width,canvas2.height);
+				 var image2 = document.getElementById('img');
+				 var i=1
+				 var j=1
+				 var n=4
+				 var sp=5
+				 var time = setInterval(function(){
+				 	context2.drawImage(image2,image2.width/n*(j-1),image2.height/n*(i-1),image2.width/n,image2.height/n,
+				 	sp*j+image2.width*(j-1)/2,sp*i+image2.height*(i-1)/2,image2.width/2,image2.height/2)
+				 	if(i==n) j=j+1,i=1;else i=i+1;
+				 },500);
+				 //从中间往两边展开
+				 var canvas3 = document.getElementById('canvas3');
+				 var ctx2=canvas3.getContext("2d");
+				 var w3=10;
+				 var w4=canvas3.width/2-5;
+				 var timer2=setInterval(function(){
+				 ctx2.save()
+				 ctx2.beginPath();
+				 ctx2.rect(w4,0,w3,1000);
+				 ctx2.closePath();
+				 ctx2.clip();
+				 ctx2.drawImage(image2,0,0,canvas3.width,canvas3.height);
+				 ctx2.restore();
+				 w3=w3+10;
+				 w4=w4-5;
+				 },100);
+				}
+		</script>
+	</body>
+</html>

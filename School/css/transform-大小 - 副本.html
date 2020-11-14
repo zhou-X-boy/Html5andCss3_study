@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>单击奇数次图片缩放，单击双数次恢复</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div#pic{
+				width: 2000px;
+				height: 300px;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+			
+			div#pic>input{
+				display: none;
+			}
+			div#pic>input:checked+label>img{
+				transform: scale(0.5);/*变换可多个方面：缩放，旋转，坐标*/
+				transition: transform 2s ease-in 1ms; /*过渡慢镜头*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pic">
+			<input id="s1" type="checkbox" />
+			<label for="s1"><img src="images/lb1.jpeg"/></label>
+			<input id="s2" type="checkbox" />
+			<label for="s2"><img src="images/lb2.jpeg"/></label>
+			<input id="s3" type="checkbox" />
+			<label for="s3"><img src="images/lb3.jpeg"/></label>
+		</div>
+	</body>
+</html>

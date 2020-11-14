@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>0317 2班02周文强 利用canvas+js绘制具有渐变色的矩形进度条，并显示进度百分比</title>
+		<style>
+				#can{
+					border: 1px solid blue;
+				}
+				#jdt{
+					margin-top: -100px;
+					width: 500px;
+					text-align: center;
+					font-size: 30px;
+				}
+			</style>
+		</head>
+	</head>
+	<body>
+		<canvas id="can" width="500px" height="500px"></canvas>
+		<div id="jdt"></div>
+		<script>
+		window.onload=function(){
+			var ocan=document.getElementById("can")
+			var ctx=ocan.getContext("2d");
+			var odiv=document.getElementById("jdt")
+			var w=0;
+			var n=1;
+			odiv.innerHTML="当前进度："+Math.floor(w/500*100,2)+"%";
+			var timer;//计时器变量
+			timer=setInterval(function(){
+				w+=5
+				if(n%2==1) ctx.fillStyle="blue";
+				else ctx.fillStyle="white";
+				ctx.save();
+				ctx.fillRect(w,0,20,20);
+				ctx.translate(10,10);
+				ctx.restore();
+				n++;
+				odiv.innerHTML="当前进度："+Math.floor(w/500*100,2)+"%";
+				if(w==500){
+					clearInterval(timer);
+				}
+			},200);
+		}
+		</script>
+	</body>
+</html>

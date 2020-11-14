@@ -1,0 +1,14 @@
+CACHE MANIFEST
+#这个声明必须第一行
+
+CACHE
+#指明要从服务器放到本地缓存的文件名
+NCP5.png
+
+NETWORK:
+#指明必须从服务器上获取，绕开本地缓存
+1.css
+
+FALLBACK:
+#访问失败的重定向
+2.css

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="500px" height="500px">
+			1
+		</canvas>
+		<script>
+			window.onload=function(){
+				var canvas=document.getElementById("canvas");
+				var ctx=canvas.getContext("2d");
+				//设置字体属性
+				ctx.font="60px 楷体 bold";
+				//设置填充色
+				ctx.fillStyle="blue";
+				//画填充文字
+				ctx.fillText("Hello,WOrld",100,100);
+				
+				//设置线条色
+			    ctx.strokeStyle="green";
+				ctx.lineWidth=5;
+				//画线条文字（空心字）
+				ctx.strokeText("Hello,World",100,200);
+				
+				//设置填充色：填充色为图片
+				//生成图片对象
+				var image=new Image();
+				image.src="b.jpg";
+				image.onload=function(){
+				//生成填充图片
+				var pp=ctx.createPattern(image,"repeat");
+				ctx.fillStyle=pp;
+				//画填充文字
+				ctx.fillText("Hello,World",100,300);
+				}
+			}
+		</script>
+	</body>
+</html>

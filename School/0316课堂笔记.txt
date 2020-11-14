@@ -1,0 +1,97 @@
+2020-3-9  整理表单和表单元素
+1、表单元素input
+注意它的
+1）属性：placeholder,maxlength,size,required,readonly,pattern
+2）多种type
+text,password,radio,checkbox,submit,reset,button
+新增：email,url,number,range,color,date,search
+补充：text和datalist合用，混合功能框=输入框+下拉选择
+**type为number、range时，规定最大值、最小值、步长
+**用output显示range的数值：<output name="we"></output>斤
+onchange="we.value=this.value"
+2、表单元素验证（规定各元素填写内容的格式、类型、长度等）
+1）规定必填、非空：required
+2）规定最长字符个数：maxlength
+3）规定某些内容格式、类型、最小值、最大值：h5新增的type
+4）规定内容格式、类型、最小长度、最大长度：正则表达式——pattern属性，js代码
+a.<input........ pattern="^正则表达式$"/>
+正则表达式是规定内容格式从左到右的每一位的规定：\s,\S,\d,\D,\w,\W,\.
+重复的：{n},{n,},{n,m},*,+,?
+某一位是某个区间中的任意一个字符：[a-z]
+或者：|
+5）规定内容用正则表达式很难表示：js表单验证
+比如：备注里面不能有违规字眼
+String对象，indexOf("查找串"[,开始位置]）,length验证长度
+**string对象实际是一个数组，位置从0开始
+**当indexOf返回值是0时，表示找到了查找串，在第一个位置上
+6）Ajax验证某个表单元素值（比如注册的用户名）惟一
+3、form新增属性
+1）表单元素中增：form="它所在form的id"
+2）按钮元素中增：formaction="不同的处理页面名" formmethod="不同的提交方式"
+
+第5章video和audio
+一、视频video
+1、容器和解码编码概念
+2、video
+<video src="" width="" height="">
+不能正常播放时的替代文字
+</video>
+3、事先准备同一视频的不同格式，利用video播放
+<video width="" height="">
+ <source src="" type="">
+ <source src="" type="">
+不能正常播放时的替代文字
+</video>
+4、例子：利用爱奇艺的背景，做自己的视频播放器，并且自动拖放，带控
+制栏
+1）截取爱奇艺
+2）算好视频元素的宽度高度，位置
+3）定宽度高度，定位
+
+2020-03-10
+继续讲video例子
+例子2：点播器：顺序播放多个视频，上一个，下一个的按钮
+src
+load()
+play()
+例子3：上一个，下一个
+利用数组的下标，因为只有数组下标才能说上一个，下一个
+*****侦听页面元素事件
+第一种侦听格式：元素名.on事件=function(){}
+侦听body有没有完全载入事件load，针对媒体文件的处理操作
+window.onload=function(){}
+例子4：人工控制，并显示当前播放时间和总时间和播放进度百分比
+用属性currentTime,duration
+用事件timeUpdate
+人工控制栏：播放，暂停，结束，静音，N倍速
+用方法：play(),pause()
+用属性：muted,playbackRate
+
+2020-3-13
+继续学习video，并复习学习图标字体、精灵图
+例子5：播放集数：一集对应一个视频 
+技术：按钮数组+按钮数组元素的侦听+视频数组
+1、*****.toFixed(2)：保留小数位数
+2、*****静音属性的值为true和false，不需要判断它是true还是false，直接切换
+所以切换它的值：objVideo.muted=!objVideo.muted;3、向前快进（结束）、向后回放：用属性currentTime加一个秒数、减去一个秒数
+4、侦听video的pause事件、ended事件：插播促销广告的图片
+侦听ended事件还可以做：循环播放
+*****技术：侦听数组元素事件
+
+在按钮提示文字里面用图标字体：https://www.iconfont.cn
+下载后的压缩包解压：
+1、字体文件：.eot,.svg,.ttf,.woff,.woff2
+2、css文件：
+3、js文件：
+4、*****示例文件：demo_index.html
+步1：进官网；
+步2：将要用的图标放入购物车……
+步3：点击购物车，新建项目，取名，本地下载
+步4：将压缩包解压到你的网站文件夹
+步5：打开demo_index.html源代码，复制<link>、<script>，修改一下css、js文件的目录
+步6：浏览demo_index.html，点击要用的图标，右击检查，复制该元素的相应代码copy element到你的文件位置中
+
+用小图集合（精灵图）
+1、将多个小图合并到一个大图中，保存；
+2、在布局标签中<span id=""></span>
+3、对这个标签用css：background-image;background-repeat:no-repeat;background-position:x y；（x,y为原图的坐标变成0 0要减去的数值）

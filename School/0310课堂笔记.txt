@@ -1,0 +1,85 @@
+2020-3-9
+1、学习datalist
+2、复习input的属性：
+placeholder,required,readonly
+3、对于网民填写、输入提出格式、内容上的要求（规定）——表单验证（主要针对input type="text"、input type="password"和textarea）
+0）必填：required
+1）填写长度、最多字符个数:maxlength
+2）填写内容和格式
+h5的input新增的type：email（邮箱格式）,url（网址格式）,number（有最大值、最小值规定，数值型，步长，可以微调）,range有最大值、最小值规定，数值型，步长，滑动，不可见数值，要利用output显示：onchange="output的name.value=value"）,color,date
+3）正则表达式（h5中新增的属性,js正则）
+ppt的第46张：正则表达式的每一位字符模式：\s,\d,\w,\.
+{}表示重复
+[]-表示一位是某个区间中的一位
+|表示或者
+a.密码规定为6位纯数字
+\d\d\d\d\d\d
+重复写：\d{6}
+b.手机号规定首数字为1，后10位为数字符
+1\d{10}
+c.用户名必须字母开头，至少6位
+4）最严：js表单验证，一般会用到字符串string对象
+function checkBeiz(){
+			//最严的验证备注里面有无违规字眼
+			//function代码沉睡,要事件唤醒
+			var wg="黄";
+			//获取备注元素id=beiz
+			var objb=document.getElementById("beiz");
+			//获取备注元素的值
+			var str=objb.value;
+			//查找str中的违规字眼
+			var n=str.indexOf(wg);
+			if(n>=0){
+				alert("亲，你的备注里面有违规字眼，请重新填写！");
+				objb.innerHTML="";
+				objb.focus();
+				return false;
+			}
+			return true;
+			}
+
+<textarea row="10" col="100" id="beiz" 
+						onblur="return checkBeiz()">
+							1111
+							2黄2
+						</textarea>
+5）验证用户提交的某项信息惟一：Ajax
+4、提交（按钮）
+submit+action，button+js,image+js
+
+2020-3-10
+一、表单元素新增属性
+1、form="表单元素所属表单的id"
+这样，表单元素可以写在表单的外面了
+2、一个表单分别提交给不同的网站/网页
+按钮元素加上新增属性:formaction="不同的网址"
+                     formmethod="不同的提交方式"
+
+二、视频video
+1、2个概念：容器，编解码方式
+2、检测你的浏览器视频格式
+1）<body>
+  <video id="video" width="200" height="200">
+    你的浏览器不能正常播放视频！
+  </video>
+</body>
+2）***页面元素侦听
+以前，我们习惯写：<button onclick="函数名()或语句">
+现在，侦听格式——函数声明和调用一体
+第1种格式：元素.on事件=function(){}  //匿名函数
+*****区分window.onready和window.onload(音频视频绘图常用后者侦听）
+树立一个思想：有些命令一定一定是在某个事件触发后才能运行，所以要侦听
+3、举例
+1）利用你喜欢的视频网站做背景，把你的视频放在它的视频上
+1步：截屏做背景
+2步：视频元素定位、宽度高度放在背景中视频的真正位置
+3步：将video真正内容铺满：object-fit:fill;
+2）播放下一个视频文件
+1步：添加按钮<button></button>
+2步：加入按钮提示文字：练习阿里图标字体
+3步：侦听按钮事件
+3）将多个视频做成数组，侦听播放
+4、在人工控制视频播放时，按钮上的提示文字用图标文字icon
+1步：下载压缩包
+2步：解压到网站文件夹
+3步：善于利用demo_index.html

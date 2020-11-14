@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ul+li+input radio布局:checked实现单选的选项卡：选项在上面 选项的内容在想</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul#lm2{
+				width: 320px;
+				height: 300px;
+				/* border: 1px solid blue; */
+				list-style: none;
+				background-color: black;
+				color: white;
+				padding: 20px;
+				position: relative;/*相对于的相对参照物*/
+			}
+			ul#lm2 li{
+				width: 64px;
+				height: 300px;
+				/* border: 1px solid red; */
+				float: left;
+			}
+			ul#lm2>li>input{
+				display: none;
+			}
+			ul#lm2>li>input:checked+label{
+				color: orange;
+			}
+			ul#lm2>li>div{
+				width: 320px;
+				background-color: black;
+				position: absolute;
+				top: 40px;
+				left: 20px;
+			}
+			ul#lm2>li>input:checked~div{
+				z-index: 9;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="lm2">
+			<li>
+				<input id="s1" type="radio" name="sel" checked=""/>
+				<label for="s1">热门</label>
+			<div>选项1的内容选项的内容选项的内容选项的内容选项的内容选项的内容选项的内容选项的内容</div>
+			</li>
+			<li>
+				<input id="s2" type="radio" name="sel" />
+				<label for="s2">新闻</label>
+			
+			<div>选项2的内容选项的内容选项的内容选项的内容选项的内容选项的内容选项的内容选项的内容</div>
+			</li>
+			<li>
+				<input id="s3" type="radio" name="sel" />
+				<label for="s3">公告</label>
+			
+			<div>选项3的内容选项的内容选项的内容选项的内容选项的内容选项的内容选项的内容选项的内容</div>
+			</li>
+			<li>
+				<input id="s4" type="radio" name="sel" />
+				<label for="s4">活动</label>
+			
+			<div>选项4的内容选项的内容选项的内容选项的内容选项的内容选项的内容选项的内容选项的内容</div>
+			</li>
+			<li><a href="#" style="text-decoration: none; color: white;">...</a></li>
+		</ul>
+	</body>
+</html>

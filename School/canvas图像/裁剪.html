@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#pic{
+				width: 216px;
+				height: 192px;
+				border: 1px red solid;
+			}
+			#image{
+				width: 216px;
+				height: 192px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="pic">
+			<img  id="image" src="a.jpg" />
+		</div>
+		<canvas id="canvas" width="600px" height="600px" style="border: 1px blue solid;">
+			
+		</canvas>
+		<script>
+			image.onload=function(){
+				var canvas=document.getElementById("canvas");
+				var ctx=canvas.getContext("2d");
+				var image=document.getElementById("image")
+				//画图形；圆形
+				//想不断的变大圆的半径，让图片慢慢的展开
+				var r=10;
+				var timer=setInterval(function(){
+					ctx.save();
+					ctx.moveTo(150,150);
+				    ctx.beginPath();
+					ctx.arc(150,150,r,0,360*Math.PI/180);
+				    ctx.closePath();
+				    ctx.clip();
+					//画图像，只放大图像整体
+					ctx.drawImage(image,0,0,canvas.width,canvas.height);
+					ctx.restore();
+				    if(r<150)
+				        r=r+5
+				    else r=5;
+				},200);
+				
+				//画图形：方形
+			   var w=10
+			   var timer=setInterval(function(){
+				   ctx.save();
+				   ctx.beginPath();
+				   ctx.rect(0,0,w,600);
+				   ctx.closePath();
+				   // ctx.fill();//上填充色
+				   ctx.clip();
+				   ctx.drawImage(image,0,0,canvas.width,canvas.height);
+				   ctx.restore();
+				   w=w+10;
+			   },200);
+			}
+		</script>
+	</body>
+</html>

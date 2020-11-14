@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>0317 2班02周文强 canvas坐标</title>
+	</head>
+	<body>
+		<canvas id="c" width="500px" height="500px" style="border: 1px solid blue;">
+			不能正常画图
+		</canvas>
+	</body>
+	<script>
+		window.onload=function(){
+			var c=document.getElementById("c");
+			var ctx=c.getContext("2d");
+			ctx.fillStyle="yellow";
+			//ctx.fillRect(10,10,300,200);
+			ctx.translate(10,10);
+			ctx.fillRect(0,0,300,200);
+			ctx.fillStyle="red";
+			ctx.fillRect(20,20,300,200)
+			
+			ctx.rotate(45*Math.PI)
+			ctx.fillStyle="blue";
+			ctx.fillRect(40,40,300,200);
+		}
+	</script>
+</html>

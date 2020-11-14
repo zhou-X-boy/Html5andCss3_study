@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>0301 2班02周文强 localStorage保存，读取注册信息：一键多值key-values</title>
+	</head>
+	<body>
+		<form>
+			学  号：<input type="text"  id="xh"/><br />
+			用户名：<input type="text"  id="nc"/><br />
+			密  码：<input type="text" id="mm"/><br />
+			地  址：<input type="text" id="dz"/><br />
+			<input type="button" value="保存到本地" onclick="save()"/>
+			<input type="button" value="本地读取" onclick="read()"/>
+		</form>
+		<div>
+			<h1 onclick="read()">显示信息</h1>
+			<div id="show" style="width: 200px; height: 100px; border: 1px black solid;"></div>
+		</div>
+	</body>
+	<script>
+		function save(){
+			//保存key-values
+			var xh=document.getElementById("xh").value;
+			var nc=document.getElementById("nc").value;
+			var mm=document.getElementById("mm").value;
+			var dz=document.getElementById("dz").value;
+			//将多个值变成json对象的属性值
+			var obj=new Object();
+			obj.data=new Array();
+			obj.data[0]=nc;
+			obj.data[1]=mm;
+			obj.data[2]=dz;
+			localStorage.setItem(xh,JSON.stringify(obj));//json对象转换为json对象字符型
+		}
+		function read(){
+			//1；点key名法
+			var xh=document.getElementById("xh").value;
+			
+			var obj=new Object();//json对象
+			obj=JSON.parse(localStorage.getItem(xh));//字符型转换为json对象
+			//拆分obj对象的属性data的数组值
+			var str="";
+			for(var i=0;i<obj.data.length;i++){
+				str=str+i+":"+obj.data[i]+"<br/>";
+			}
+			document.getElementById("show").innerHTML=str;
+		}
+	</script>
+</html>

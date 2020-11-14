@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: pink;
+			}
+			div#all{
+				background-color: white;
+				width: 90%;
+				min-width: 600px;
+				max-width: 960px;
+				margin: 0 auto;
+				margin-top: 4vh;
+			}
+			/* 传统布局中用float:left */
+			/* 自适应布局中不用float,margin,clear等 用多列技术column(类似于word中的分栏) */
+			div#all header nav ul{
+				background-image:linear-gradient(to bottom,rgb(255,128,128),rgb(255,32,32));/* 渐变色 */
+			     list-style: none;
+				 column-count: 5;/* 分栏,栏数 */
+				 column-width: 19%;/* 栏宽 */
+				 column-gap: 1%;/* 栏间距 */
+				 column-rule: 1px white dotted;/* 栏间分割线 */
+				 line-height: 60px;
+				 padding: 0.5rem;
+				 text-align: center;
+				 color: white;
+				 font-weight: bold;
+			}
+			div#all header nav ul li:hover{
+				color: red;
+				transform: rotate(90deg);/* 旋转 */
+				transform: translate3d(0px,-5px,0px);/* translate(x,y,z)是变换transform中的位置平移,常见的y轴上移 */
+			}
+			div#mid{
+				margin-top: 4vh;
+				height: 200px;
+				border: 1px solid blue;
+				column-count: 2;
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -o-box;
+				display: box;/* 并排,默认水平并排,可以用box-orient改成垂直并排 */
+			}
+			div#mid section#left{
+				width: 1%;
+				-webkit-box-flex: 3;/* 水平方向上的37开 */
+				-moz-box-flex: 3;
+				-ms-box-flex:3;
+				-o-box-flex:3;
+				box-flex: 3;
+			}
+			div#mid section#left ul{
+				height: 100%;
+				box-orient: vertical;/* 垂直并排,为了将已经是垂直方向的多个子元素垂直分布 */
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -o-box;
+				display: box;
+				border: 1px solid red;
+				list-style: none;
+			}
+			div#mid section#left ul li{
+				-webkit-box-flex: 1;/* 垂直方向上的均分 */
+				-moz-box-flex: 1;
+				-ms-box-flex:1;
+				-o-box-flex:1;
+				box-flex: 1;
+			}
+			div#mid section#left ul li:nth-child(1){
+				box-ordinal-group: 5;/* 子元素在父元素中的放置序号 */
+			}
+			div#mid section#right{
+				width: 1%;
+				-webkit-box-flex: 7;/* 水平方向上的37开 */
+				-moz-box-flex: 7;
+				-ms-box-flex:7;
+				-o-box-flex:7;
+				box-flex: 7;
+			}
+			
+			div#bottom{
+				display: flex;/* 并排,默认水平并排 */
+				margin-top: 20px;
+			}
+			div#bottom div:nth-child(1){
+				width: 30%;
+			}
+			div#bottom div:nth-child(2){
+				width: 70%;
+				border: 1px solid blue;
+			}
+			div#bottom div{
+				flex: grow;/* 均分,缩写版 */
+			}
+			div#bottom_right{
+				padding: 0.3rem;
+				box-sizing: border-box;
+				display: flex;
+			}
+			div#bottom_right dl{
+				width: 25%;
+				padding: 0.3rem;
+				box-sizing: border-box;
+				border: 1px solid red;
+			}
+			div#bottom_right dl dt{
+				width: 90%;
+				
+			}
+			div#bottom_right dl dt img{
+				/* 图片自适应 */
+				width: 100%;
+				height: auto;
+			}
+			div#bottom_right dl dd h4{
+				text-align: center;
+			}
+			div#bottom_right dl dd>div{
+				display: flex;
+			}
+			div#bottom_right dl dd>div>div:nth-child(1){
+				width: 45px;/* 因为要做圆形,局部使用固定高度宽度 */
+			    height: 45px;
+				background-color: orange;
+				color: white;
+				border: 1px solid orange;
+				border-radius: 50%;
+				text-align: center;
+				box-sizing: border-box;
+			}
+			div#bottom_right dl dd>div>div:nth-child(2){
+				width: 70%;
+				height: auto;
+			}
+			div#bottom_right dl dd>div>div:nth-child(2) span{
+				color: orange;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<!--自适应布局 相对单位：%,rem,em,vw,vh,min-width,max-width-->
+		<div id="all">
+			<!--html5布局的头部header-->
+			<header>
+				<!--导航条nav-->
+				<nav>
+					<ul>
+						<li>a</li>
+						<li>b</li>
+						<li>c</li>
+						<li>d</li>
+						<li>e</li>
+					</ul>
+				</nav>
+			</header>
+			
+			<!-- 网页中部 -->
+			<div id="mid">
+				<section id="left">
+					<ul>
+						<li><span></span>a1</li>
+						<li><span></span>b1</li>
+						<li><span></span>c1</li>
+						<li><span></span>d1</li>
+						<li><span></span>e1</li>
+					</ul>
+				</section>
+				<section id="right">
+					<article>
+						<h1>自适应布局</h1>
+						<div>
+							自适应自适应自适应自适应自适应自适应自适应
+							自适应自适应自适应自适应自适应自适应自适应
+							自适应自适应自适应自适应自适应自适应自适应
+						</div>
+					</article>
+				</section>
+			</div>
+			<div id="bottom">
+				<div id="bottom_left">
+					display:flex;
+				</div>
+				<div id="bottom_right">
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg"/>
+						</dt>
+						<dd>
+							<h4>***X1/200*200</h4>
+							<h4>上新产品 ***</h4>
+							<div>
+								<div>奖励金</div>
+								<div>
+									<p>门店<span>1.00</span>元</p>
+									<p>门店<span>5.00</span>元</p>
+							    </div>
+							</div>
+						</dd>
+					</dl>
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg"/>
+						</dt>
+						<dd>
+							<h4>***X1/200*200</h4>
+							<h4>上新产品 ***</h4>
+							<div>
+								<div>奖励金</div>
+								<div>
+									<p>门店<span>1.00</span>元</p>
+									<p>门店<span>5.00</span>元</p>
+							    </div>
+							</div>
+						</dd>
+					</dl>
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg"/>
+						</dt>
+						<dd>
+							<h4>***X1/200*200</h4>
+							<h4>上新产品 ***</h4>
+							<div>
+								<div>奖励金</div>
+								<div>
+									<p>门店<span>1.00</span>元</p>
+									<p>门店<span>5.00</span>元</p>
+							    </div>
+							</div>
+						</dd>
+					</dl>
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg"/>
+						</dt>
+						<dd>
+							<h4>***X1/200*200</h4>
+							<h4>上新产品 ***</h4>
+							<div>
+								<div>奖励金</div>
+								<div>
+									<p>门店<span>1.00</span>元</p>
+									<p>门店<span>5.00</span>元</p>
+							    </div>
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

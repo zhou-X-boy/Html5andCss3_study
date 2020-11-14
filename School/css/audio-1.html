@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div#music{
+				width: 824px;
+				height: 470px;
+				border: 1px solid blue;
+				background-image: url();
+				position:relative;
+			}
+			audio#au{
+				width: 244px;
+				height: 42px;
+				position: absolute;
+				bottom: 142px;
+				left: 274px;
+			}
+			div#cd{
+				width: 240px;
+				height: 240px;
+				border: 1px solid red;
+				background-image: url();
+				background-repeat: no-repeat;
+				background-position: center center; /*图片居中*/
+				position: absolute;
+				left: 274px;
+				top: 44px;
+				opacity: 0.2;/*透明度*/
+			}
+			/*自定义动画@keyframes，可以用%，也可以用from to*/
+			@keyframes xz{
+				from {
+					transform: rotate(0deg);/*初始是旋转0度*/
+				}
+				to {
+					transform: rotate(360deg);/*终止是旋转360度*/
+				}
+			}
+			div#cd:hover{
+             /*transform: rotate(360deg);顺时针旋转90度，负数为逆时针*/ 
+			 animation:xz 2s;/*类似于js中的sentInterval*/
+			}
+			div#gc{
+				background-color: #66ccff;
+				width: 246px;
+				height: 180px;
+				border: 1px solid green;
+				right: 44px;
+				bottom: 140px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="music">
+			<audio id="au" src="" controls>
+				no can listen
+			</audio>
+			<div id="cd">
+				
+			</div>
+			<div id="gc">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			var au;
+			var gc;
+			var h=180px;
+			var timer;
+			//先侦听windowns的load事件，检测媒体文件到位
+			window.onload=function(){
+				au=document.getElementById("au");
+				gc=document.getElementById("gc");
+				//侦听audio有没有被单击“播放”
+				au.onplay=function(){
+					timer=setInterval(gcMove(),200)
+				}
+			}
+			function gcMove(gc){
+				// var h=gc.style.height;
+				h=h-10;
+				gc.style.height=h+"px";
+			}
+		</script>
+	</body>
+</html>

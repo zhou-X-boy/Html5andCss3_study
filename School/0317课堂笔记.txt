@@ -1,0 +1,170 @@
+2020-3-9
+1、学习datalist
+2、复习input的属性：
+placeholder,required,readonly
+3、对于网民填写、输入提出格式、内容上的要求（规定）——表单验证（主要针对input type="text"、input type="password"和textarea）
+0）必填：required
+1）填写长度、最多字符个数:maxlength
+2）填写内容和格式
+h5的input新增的type：email（邮箱格式）,url（网址格式）,number（有最大值、最小值规定，数值型，步长，可以微调）,range有最大值、最小值规定，数值型，步长，滑动，不可见数值，要利用output显示：onchange="output的name.value=value"）,color,date
+3）正则表达式（h5中新增的属性,js正则）
+ppt的第46张：正则表达式的每一位字符模式：\s,\d,\w,\.
+{}表示重复
+[]-表示一位是某个区间中的一位
+|表示或者
+a.密码规定为6位纯数字
+\d\d\d\d\d\d
+重复写：\d{6}
+b.手机号规定首数字为1，后10位为数字符
+1\d{10}
+c.用户名必须字母开头，至少6位
+4）最严：js表单验证，一般会用到字符串string对象
+function checkBeiz(){
+			//最严的验证备注里面有无违规字眼
+			//function代码沉睡,要事件唤醒
+			var wg="黄";
+			//获取备注元素id=beiz
+			var objb=document.getElementById("beiz");
+			//获取备注元素的值
+			var str=objb.value;
+			//查找str中的违规字眼
+			var n=str.indexOf(wg);
+			if(n>=0){
+				alert("亲，你的备注里面有违规字眼，请重新填写！");
+				objb.innerHTML="";
+				objb.focus();
+				return false;
+			}
+			return true;
+			}
+
+<textarea row="10" col="100" id="beiz" 
+						onblur="return checkBeiz()">
+							1111
+							2黄2
+						</textarea>
+5）验证用户提交的某项信息惟一：Ajax
+4、提交（按钮）
+submit+action，button+js,image+js
+
+2020-3-10
+一、表单元素新增属性
+1、form="表单元素所属表单的id"
+这样，表单元素可以写在表单的外面了
+2、一个表单分别提交给不同的网站/网页
+按钮元素加上新增属性:formaction="不同的网址"
+                     formmethod="不同的提交方式"
+
+二、视频video
+1、2个概念：容器，编解码方式
+2、检测你的浏览器视频格式
+1）<body>
+  <video id="video" width="200" height="200">
+    你的浏览器不能正常播放视频！
+  </video>
+</body>
+2）***页面元素侦听
+以前，我们习惯写：<button onclick="函数名()或语句">
+现在，侦听格式——函数声明和调用一体
+第1种格式：元素.on事件=function(){}  //匿名函数
+*****区分window.onready和window.onload(音频视频绘图常用后者侦听）
+树立一个思想：有些命令一定一定是在某个事件触发后才能运行，所以要侦听
+3、举例
+1）利用你喜欢的视频网站做背景，把你的视频放在它的视频上
+1步：截屏做背景
+2步：视频元素定位、宽度高度放在背景中视频的真正位置
+3步：将video真正内容铺满：object-fit:fill;
+2）播放下一个视频文件
+1步：添加按钮<button></button>
+2步：加入按钮提示文字：练习阿里图标字体
+3步：侦听按钮事件
+3）将多个视频做成数组，侦听播放
+4、在人工控制视频播放时，按钮上的提示文字用图标文字icon
+1步：下载压缩包
+2步：解压到网站文件夹
+3步：善于利用demo_index.html
+
+2020-3-16
+一、巩固video
+1、控制视频播放速度
+利用属性：
+1)playbackRate，倍速，加倍。如果为整数则加倍速度、快镜头，如果为小数减倍速度、慢镜头，相当于实际生活中DVD的X3
+.playbackRate=3;
+2）currentTime，获得当前播放时间，也是人为改变当前播放时间达到快进、回放，相当于看网剧时拉动进度条
+.currentTime=.currentTime+10;//快进到结束视频
+.currentTime=.currentTime-10;//回放到开始视频
+2、控制按钮数组
+1步：利用数组保存多个视频文件名称；
+2步：准备同name的按钮数组b；
+3步：js中，逐个侦听按钮数组元素b[i]！！！
+document.getElementsByName("b")
+逐个和this或e.target(事件源)进行比较
+3、补充阿里图标字库
+1步：进入官网，选择多个图标字体放入购物车
+2步：点击购物车，新建项目，本地下载
+3步：解压，善于使用阿里的源字体文件
+1)法：demo_index.html
+2)法：CSS3法：@font-face
+4、精灵图：多个小图片拼成一张大图片，做为背景图，利用背景图的CSS属性
+1步：ps，将多个小图（尺寸相同）拼成一个大图；
+2步：画笔打开图片，一定要有标尺显示；
+3步：布局span，设定它的宽度高度，定位背景图
+用到CSS属性：width46,height48,background-image,background-repeat,background-position
+***background-position：x y;
+x、y为图片所需区域左上角平移成新原点(0,0)所改变的量
+
+
+二、对比学习audio
+
+2020-3-17
+一、元素事件侦听格式2：ppt第16张
+元素名.addEventListener("事件名",函数名,false);
+元素名.addEventListener("事件名",function(){},false);
+
+二、track是video的字幕
+.vtt
+
+三、canvas（画布）绘图：canvas+js代码画图
+1步：准备canvas
+<canvas id="canvas" width="500px" height="500px">
+	  替代文字：您的浏览器不能正常识别canvas
+</canvas>
+2步：写js代码
+2.1：获取canvas元素，把它当成“画写板”
+2.2：获取该元素的上下文对象 “画笔”，分2d的和3d的
+2.3：“擦”除画布原有内容
+2.4：设置填充色、线条色
+2.5：画填充方形图，画线条方形图
+*****动画原理：计时器timer，setInterval(匿名函数function(){},间隔毫秒数);
+*****计时器中一定要有结束条件，使得计时器结束timer.clear();
+对比for循环画图效果
+
+四、举例：
+1、矩形进度条：动画画矩形图，显示百分比
+
+五、canvas的坐标变换
+1、平移
+.translate()
+2、旋转
+.rotate()
+3、缩放
+.scale()
+*****它们都会改变canvas的坐标
+所以有时候要保存某一时刻的绘图状态（比如坐标），要用到.save();
+在后期再次使用这个状态时，要用到.restore()恢复
+
+六、和填充色、线条色有关的操作
+1、透明度
+.globalAlpha(0-1的数值)
+2、渐变色
+1）线性渐变色
+ctx.createLinearGradient(xStart,yStart,xEnd,yEnd);
+注意起始坐标和终止坐标
+2）径向渐变色
+context.createRadialGradient(xStart,yStart,radiusStart,xEnd,yEnd,radiusEnd);
+注意起始坐标和终止坐标
+*****添加颜色断点：.addColorStop(起点位0，颜色)
+                   .addColorStop(中间位0.n，颜色)
+                   ……
+                   .addColorStop(终点位1，颜色)
+******渐变色要送给fillStyle和strokeStyle

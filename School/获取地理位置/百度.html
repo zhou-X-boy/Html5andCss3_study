@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<title>0330 2班00刘刘 获取地理位置、画百度地图</title>
+<style>
+ #ditu{width:500px;height:500px;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script><!--引入百度地图-->
+<script>
+ function get(){
+   //1.检测是否识别h5定位功能
+   if(navigator.geolocation)
+    {alert("can");
+   //2.调用geolocation API（善于使用接口类navigator.geolocation）中的getCurrentPosition方法
+  //******这个方法有3个参数，其中2个是回调函数，只写回调函数名，回调函数是人工自己设定的函数，参数为API方法调用得到的结果
+   navigator.geolocation.getCurrentPosition(succ,err); //succ回调函数表示成功得到定位信息，是一个geoposition对象
+
+   }
+   else
+    alert("no-can");
+ }
+  
+  //******自己设定的回调函数要记得参数收结果
+  function succ(position){
+    //3.拆分position对象属性coords、timestamp
+    var x=position.coords.longitude;
+    var y=position.coords.latitude;
+    document.getElementById("show").innerHTML="经度："+x+"纬度："+y;
+    initBMap(x,y);
+  }
+
+  //当getCurrentPosition调用失败时调用该方法
+  function err(error) {
+     switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    loc.innerHTML = "用户拒绝地理位置请求."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    loc.innerHTML = "位置信息不可用."
+                    break;
+                case error.TIMEOUT:
+                    loc.innerHTML = "获取位置信息请求超时."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    loc.innerHTML = "一个未知错误发生."
+                    break;
+            }
+        }
+
+   function initBMap(x,y){
+   //画百度地图
+   //1.创建百度地图对象，绑定div 
+   var map=new BMap.Map("ditu");
+   //2.创建中心点
+   var point=new BMap.Point(x,y);
+   //3.以point为中心画级别地图
+   map.centerAndZoom(point,15);
+ }
+</script>
+<body>
+ <div id="show">
+ </div>
+ <button onclick="get()">单击获取经纬度</button>
+<div id="ditu">
+</div>
+</body>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+   CSS3样式
+   复习格式：选择器{样式属性名：属性值；}
+   ******选择器，相当于你点名，如果点名不到位，CSS效果没有
+   1、选择器：基本选择器：标签，CLASS，ID
+              复合选择器：交集，并集
+              关系选择器：后代空格，直接儿子>，相邻兄弟，所有兄弟
+              属性选择器：[属性名＝“属性值”]
+              伪类选择器：：状态{}，最常见的是：hover,:nth-child(n)                     伪元素： ：before,:after
+  2、样式属性名：文本样式，段落样式，列表样式，背景样式，盒子样式（边框），定位(float:left;position常用于几个容器重合、叠加+z-index:;)
+  ******样式的继承，样式的覆盖
+  ******标签、元素它有占位高度和宽度：占位宽度＝leftborder+rightborder+leftpadding+rightpadding+width,如果要做成视觉宽度，要width减去padding、border
+-->
+<title>ul+li+div布局，：target超链接实现选项卡：选项在下面，选项的对应内容在上面</title>
+
+<style>
+ *{
+	 margin:0;padding:0;
+	}
+ div#lm1{
+	 position:relative;
+	 width:500px;
+     height:300px;
+	 padding:20px;
+     background-color:black;
+     color:white;
+}
+ div#con div{
+	 width:320px;
+	 height:200px;
+	 position:absolute;
+	 background-color:black;
+	 top:20px;
+	 left:100px;
+}
+ ul#sel{
+	width:71px;
+	list-style:none;
+	border:1px red solid;
+	position:absolute;
+	bottom:20px;
+	left:20px;
+	top:20px;
+}/*相对于的相对参照物*/
+ul#sel li{
+	line-height: 60px;/*行高*/
+    width:70px;
+    text-align:center;
+	border: 1px white solid;
+	border-radius: 20px;/*边框角*/
+}/*上下变成水平并列*/
+#s1:target,#s2:target,#s3:target{
+ z-index:9;
+}
+ ul#sel li:hover{
+	 background-color:white;/*background-color有前后2个变化值*/
+     transition:background 2s ease-in 20ms;/*过渡格式：transition:变化属性名 变化时长 变化效果 延时*/}
+
+ div#con div:hover{
+	 border:10px yellow solid;
+     box-shadow:1px 1px 20px white;/*边框阴影：box-shadow:x距离 y距离 阴影圈半径 阴影颜色*/
+     box-sizing:border-box;/*怪异盒子，将border、padding都已经计算到width、height里面了，无论你怎么变化border、padding，视觉宽度、高度不会变*/
+     transition:border 2s ease-in 4ms,box-shadow 2s ease-in 2ms;
+}
+</style>
+<body>
+    <div id="lm1">
+        <div id="con">
+            <div id="s1">选项1的内容选项1的内容选项1的内容选项1的内容选项1的内容选项1的内容选项1的内容选项1的内容选项1的内容</div>
+            <div id="s2">选项2的内容选项2的内容选项2的内容选项2的内容选项2的内容选项1的内容选项2的内容选项2的内容选项2的内容</div>
+            <div id="s3">选项3的内容选项3的内容选项3的内容选项3选项1的内容选项3的内容选项3的内容选项3的内容</div>
+        </div>
+    <ul id="sel">
+	    <li><a href="#s1">选项1</a></li>
+	    <li><a href="#s2">选项2</a></li>
+	    <li><a href="#s3">选项3</a></li>
+    </ul>
+</div>
+</body>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>watchPosition获取多次位置信息</title>
+</head>
+<body onLoad="init();">
+<script>
+    var loc;
+    var counter = 0;
+    var watchId;
+    function init() {
+        loc = document.getElementById("location");
+    }
+    // Call this function when "Start watching" button gets clicked
+    function startWatch() {
+        if (navigator.geolocation) {
+            var options = {enableHighAccuracy: true, timeout: 2000};
+            watchId = navigator.geolocation.watchPosition(showPosition, showError, options);
+        } else {
+            loc.innerHTML = "您的浏览器不支持html5地理位置.";
+        }
+    }
+    // Call this function when "Stop watching" button gets clicked
+    function clearWatch() {
+        // Cancel the updates when the user clicks a button.
+        navigator.geolocation.clearWatch(watchId);
+    }
+
+    // 当getCurrentPosition方法调用成功时调用该方法
+    function showPosition(position) {
+        loc.innerHTML = "计数器: " + counter++ + "<br>" +
+        "经度: " + position.coords.latitude + "<br>" +
+        "纬度: " + position.coords.longitude;
+    }
+    // 当getCurrentPosition调用失败时调用该方法
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                loc.innerHTML = "用户拒绝地理位置请求."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                loc.innerHTML = "位置信息不可用."
+                break;
+            case error.TIMEOUT:
+                loc.innerHTML = "获取位置信息请求超时."
+                break;
+            case error.UNKNOWN_ERROR:
+                loc.innerHTML = "一个未知错误发生."
+                break;
+        }
+    }
+</script>
+<p id="location">单击按钮获取你的位置:</p>
+<button onClick="startWatch()">开始观察</button>
+<button onClick="clearWatch()">停止观察</button>
+</body>
+</html>

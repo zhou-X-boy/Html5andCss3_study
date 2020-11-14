@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#shang,#xia{
+				width: 300px;
+				height: 200px;
+			}
+			#shang{
+				border: 1px solid red;
+			}
+			#xia{
+				border: 1px solid blue;
+			}
+			#tu{
+				width: 100px;
+				height: 80px;
+			}
+			.c{
+				width: 100px;
+				height: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="shang">
+			<img src="a.jpg" id="tu" draggable="true" ondragstart="dragMove(event)"/>
+		</div>
+		<div id="xia" ondrop="drop(event)" ondragover="over(event)">
+			
+		</div>
+		
+		<script>
+			function dragMove(event){
+				console.log("dragstart"+event.target);//显示事件源
+				//规定视觉效果
+				event.effectAllowed="copy";
+				//传送drag对象有关信息
+				event.dataTransfer.setData("text/plain",event.target.src);
+			}
+			
+			function over(event){
+				//拖动过程中，避免拖拽对象的默认操作
+				console.log("dragover"+event.target)
+				event.preventDefault()
+			}
+			
+			function drop(event){
+				console.log("drop"+event.target);//显示放入对象事件源
+				event.preventDefault();
+				//相应设置拖拽的效果
+				event.dropEffect="copy";
+				//接收drag对象传送的信息
+				var src=event.dataTransfer.getData("text/plain");
+				//alert(src);
+				//对象移动：实际上在目的地添加子元素，在原始地保留子元素
+				//生成新元素
+				var image=document.createElement("img");//产生<img/>
+				
+				image.src=src;//让image元素等于id元素
+				image.className="c";
+				//将刚生成的元素变成别人的子元素
+				document.getElementById("xia").appendChild(image);
+			}
+		</script>
+	</body>
+</html>

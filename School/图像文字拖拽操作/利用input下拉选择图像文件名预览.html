@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#xia{
+				width: 300px;
+				height: 200px;
+				border: 1px solid blue;
+			}
+			.tu{
+				margin: 10px;
+				width: 107px;
+				height: 83px;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="#">
+			<input type="file" id="ff" onchange="imagePre(files)" multiple="true" />
+		</form>
+		<div id="xia">
+		</div>
+		
+		<script>
+			
+			function imagePre(files){
+				//alert(files);
+				if(typeof FileReader=="undefined"){
+					alert("not can");
+				}else{
+					alert("can");
+				}
+				//文件列表遍历，每个文件利用自己的FilerReader“阅读”
+				//var file=files[0];
+				for(var i=0;i<files.length;i++){
+					file=files[i];
+					
+					var reader=new FileReader();//类似于该文件的读指针
+					reader.readAsDataURL(file);
+					//侦听“阅读完了没有”load事件
+					reader.onload=function(event){
+						//临时生成<img/>
+						var img=document.createElement("img");
+						//将img的src属性和reader的结果.result绑定
+						var re=event.target.result;
+						img.src=re;
+						img.className="tu";
+						document.getElementById("xia").appendChild(img);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

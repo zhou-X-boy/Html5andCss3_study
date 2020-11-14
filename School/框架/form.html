@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>0303 2班02周文强 表单和表单元素制作注册网页</title>
+	    <script>
+	    	function showday(){
+	    	//函数声明、定义部分
+	    	//***function{}里面的代码是沉睡状态的，要靠on事件来调用唤醒它，函数名右边的()不能省略
+	    	//这个函数的功能：当网民选择了一个新的不同的月份，产生相应的日期1-N
+	    	//先获取网民选择的月份
+	    	var m=document.getElementById("month").value;
+	    	//alert(m);//调试，检测一下
+	    	//先判断月份（因为不同的月份N不同），再循环产生日期从1-N，再把它们加到日那个select中去
+	    	//获取一下日那个select元素
+	    	var day=document.getElementById("day");
+	    	//alert(day);
+	    	if(m==1||m==3||m==5||m==7||m==8||m==10||m==12)
+	    	{
+				for (var x=1;x<=31;x++)
+	    	    {//把<option value=x>x</option>加到日那个select中
+	    	     //alert(x);
+	    	        day.add(new Option(x,x),null);       
+	    	    }
+			}
+			else if(m==2){
+				for(var x=1;x<=29;x++){
+					day.add(new Option(x,x),null);
+				}
+		    }
+			else{
+				for(var x=1;x<=30;x++){
+					day.add(new Option(x,x),null);
+				}
+			}
+	        }
+			function checkBeiz(){
+				//最严的验证备注里面有无违规字眼
+				var wg="黄";
+				//获取备注元素id=beiz
+				var objd=document.getElementById("beiz");
+				//获取备注元素的值
+				var str=objd.value;
+				//查找str中的违规字眼
+				var n=str.indexOf(wg);
+				if(n>=0){
+					alert("亲，你的备注里面存着违规字眼,请重新填写！");
+					objd.innerHTML="";
+					objd.focus();
+					return false;
+				}
+				return true;
+			}
+	    </script>
+	</head>
+	<body>
+		<header>......</header>
+		<div id="subbbody">
+			<aside></aside>
+			<main>
+				<!--注册表单form,可以将几个表单元素分组fieldset-->
+				<form action="#" method="post">
+					<fieldset>
+						<legend>
+							基本信息(必填项)
+						</legend>
+						<!--自动焦点：即点击前面的提示文章，光标自动进框 for="框的id"-->
+						<p><label for="username">用户名:</label><input type="text" name="username" id="username" placeholder="请在此输入用户名" required="required"/></p>
+						<p><label for="userpassword">密 码:</label><input type="password" name="userpassword" id="userpassword" maxlength="6" required="required" pattern="^\d{6}$"/></p>
+					</fieldset>
+					<fieldset>
+						<legend>
+							详细信息(选填项)
+						</legend>
+						<p>喜欢的水果(组合框：输入+选择)：<input type="text" name="fruit" list="fr">
+						             <datalist id="fr">
+										 <option value="苹果">苹果</option>
+										 <option value="梨">梨</option>
+										 <option value="菠萝">菠萝</option>
+									 </datalist></p>
+						<p>性别(单选):
+						    <input type="radio" name="sex" checked="checked"/>男
+						    <input type="radio" name="sex" />女
+						</p>
+						<p>爱好(多选):
+						    <input type="checkbox" name="ah" id="ah" checked="checked"/>唱歌
+						    <input type="checkbox" name="ah" id="ah"/>学习
+						</p>
+					    <p>城市(单选):
+						    <select>
+						        <optgroup label="江西省">
+								    <option value="1">南昌</option> 
+								    <option value="2">九江</option>
+								    <option value="3">赣州</option>
+						        </optgroup> 
+							    <optgroup label="江苏省">
+							        <option value="1">南京</option> 
+							    </optgroup>
+						    </select>
+						</p>
+						<p>出生日期(级联):<input type="text" name="year"/>年
+						     <select id="month" onchange="showday()">
+								<!--<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>-->
+								<script>
+									for(var i=1;i<=12;i++){
+										document.write("<option value='"+i+"'>"+i+"</option>");
+									}
+								</script>
+							</select>月
+							<select id="day"></select>日</p>
+							<p>备注(多行文本输入textarea：要求备注里面不能有违规字眼)：<!--readonly只能看不能改-->
+							     <textarea id="beiz" name="bz" col="100" row="10"  onblur="return checkBeiz">
+									 黄
+									 1111
+									 2222
+									 3333
+								 </textarea></p>
+					</fieldset>
+					<fieldset>
+						<legend>H5新增的type，自带验证内容格式</legend>
+					    <p>邮箱：<input type="email" name="email" /></p>
+						<p>QQ空间：<input type="url" name="url" /></p>
+						<p>幸运色：<input type="color" name="color" /></p>
+						<p>幸运日期：<input type="date" name="date" /></p>
+						<p>年龄：<input type="number" name="age" max="200" min="1" step="1"/></p>
+					    <p>体重：<input type="range" name="weight" max="200" min="70" onchange="tz.value=value">
+						        <output name="tz"></output></p>
+					</fieldset>
+					<p><input type="submit" name="submit" value="提交" /></p>
+				</form> 
+			</main>
+		</div>
+		<footer>......</footer>
+	</body>
+</html>

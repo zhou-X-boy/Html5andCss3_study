@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>0225 2班02周文强 H5新增的结构标签+PC端的固定宽度</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: yellow;
+			}
+			#one{
+				width: 960px;
+				height: 580px;
+				background-color: white;
+				margin: 0px auto;
+			}
+			header{
+				border:1px red solid;
+			}
+			aside{
+				float: left;
+				width: 320px;
+				height: 400px;
+				border: 1px blue solid;
+			}
+			main{
+				width:635px;
+				height: 400px;
+				border: 1px aqua solid;
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			<header>
+				<!--网页页头或文章头部分，一般包含LOGO，导航，标题等-->
+				<div id=logo><img src=""/></div>
+				<nav>
+					<!--导航部分，可以是页面也可以是文章的-->
+					<a href="#">首页</a>
+					<a href="#">首页</a>
+					<a href="#">首页</a>
+				</nav>
+			</header>
+			<aside>
+				<!--页面的侧边栏或者是文章的附加部分，智能浏览器会认为这部分内容不重要，-->
+				<a href="#">欢迎来我的网站</a>
+			</aside>
+			<main>
+				<!--页面最重要的区域，一个网页只能一个，一般包含文章,区域，章节-->
+				<article id="new1">
+					<!--页面内容详细区域，可以是文章，评论，新闻等-->
+					<!--这里是一篇文章,它包括文章大小标题，作者照片，关键词，文章有多个章节，章节有小标题和内容-->
+					<header>
+						<hgroup>
+						<!--文章有大小标题，形成标题组，一般h1-h6-->
+						   <h2>如何在线课堂</h2>
+						   <h4>--从0225开始说起</h4>
+						   <h5>作者：匿名 发布时间<time>2020-02-25 11:11</time></h5>
+						</hgroup>
+						<nav>
+							<a href="#">在线</a>
+							<a href="#">课堂</a>
+							<a href="#">html1</a>
+						</nav>
+					</header>
+					<section>
+						<!--一篇文章的章节部分，有标题和内容-->
+						<h2>章节一标题</h2>
+						<p>章节一内容</p>
+					</section>
+					<section>
+						<h2>章节二标题</h2>
+						<p>章节二内容</p>
+					</section>
+					<footer>
+						<!--文章页脚部分，一般包含作者的联系方式-->
+						<address>作者联系方式：QQ1111111</address>
+					</footer>
+				</article>
+				<article id="new2">
+					<!--页面内容详细区域，可以是文章，评论，新闻等-->
+					<!--这里是一篇文章,它包括文章大小标题，作者照片，关键词，文章有多个章节，章节有小标题和内容-->
+					<header>
+						<hgroup>
+						<!--文章有大小标题，形成标题组，一般h1-h6-->
+						   <h2>如何在线课堂</h2>
+						   <h4>--从0225开始说起</h4>
+						   <h5>作者：匿名 发布时间<time>2020-02-25 11:11</time></h5>
+						</hgroup>
+						<nav>
+							<a href="#">在线</a>
+							<a href="#">课堂</a>
+							<a href="#">html1</a>
+						</nav>
+					</header>
+					<section>
+						<!--一篇文章的章节部分，有标题和内容-->
+						<h2>章节一标题</h2>
+						<p>章节一内容</p>
+					</section>
+					<section>
+						<h2>章节二标题</h2>
+						<p>章节二内容</p>
+					</section>
+					<footer>
+						<!--文章页脚部分，一般包含作者的联系方式-->
+						<address>作者联系方式：QQ1111111</address>
+					</footer>
+				</article>
+			</main>
+			<footer>
+				<!--页面页脚部分，一般是友情链接，联系方式-->
+				<a href="#">友情链接</a>
+				<a href="#">友情链接</a>
+				<a href="#">友情链接</a>
+			</footer>
+		</div>
+	</body>
+</html>

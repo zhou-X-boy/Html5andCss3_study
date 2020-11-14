@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#pic{width: 350px;height: 420px;}	
+		</style>
+	</head>
+	<body>
+		<div id="pic">
+		<img src="yys1.png" id="img">
+		</div>
+		<canvas id="canvas2" width="1000px" height="1000px" style="border: #FF0000 1px solid;">
+			代替文章：宁的浏览器不能正常识别canvas
+		</canvas>
+		<script>
+			window.onload=function(){
+				var canvas2 = document.getElementById('canvas2');
+				var context2 = canvas2.getContext('2d');
+				var image2 = document.getElementById('img');
+				//第几行第几列，规律：图宽/n*(列数-1)
+			/*	context2.drawImage(image2,0,0,image2.width/2,image2.height/2,10,10,image2.width,image2.height);
+				context2.drawImage(image2,image2.width/2,0,image2.width/2,image2.height/2,10*2+image2.width,10,image2.width,image2.height);
+				context2.drawImage(image2,0,image2.height/2,image2.width/2,image2.height/2,10,10*2+image2.height,image2.width,image2.height);
+				context2.drawImage(image2,image2.width/2,image2.height/2,image2.width/2,image2.height/2,10*2+image2.width,10*2+image2.height,image2.width,image2.height);
+				*/
+			    var i=1//行
+				var j=1//列
+				var n=3//n宫
+				var sp=10//
+			/*	for(i=1;i<3;i++){
+					for(j=1;j<3;j++){
+						context2.drawImage(image2,image2.width/2*(j-1),image2.height/2*(i-1),image2.width/2,image2.height/2,
+						10*j+image2.width*(j-1),10*i+image2.height*(i-1),image2.width,image2.height)
+					}
+				}*/
+				var time = setInterval(function(){
+					context2.drawImage(image2,image2.width/n*(j-1),image2.height/n*(i-1),image2.width/n,image2.height/n,
+					sp*j+image2.width*(j-1),sp*i+image2.height*(i-1),image2.width,image2.height)
+					if(i==n) j=j+1,i=1;else i=i+1;
+				},500);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>0331 2班02周文强 localStorage保存，读取注册信息：一键一值key-value</title>
+	</head>
+	<body>
+		<form>
+			用户名：<input type="text"  id="nc"/><br />
+			密码：<input type="text" id="mm"/><br />
+			<input type="button" value="保存到本地" onclick="save()"/>
+			<input type="button" value="本地读取" onclick="read()"/>
+		</form>
+	</body>
+	<script>
+		//保存key-value,value必须是字符型
+		function save(){
+			//保存nc的key-value
+			var nc=document.getElementById("nc").value;
+			localStorage.setItem("用户名",nc);//固定的key名保存，同名覆盖
+			var mm=document.getElementById("mm").value;
+			localStorage.setItem("密码",mm);
+		}
+		//从localStorage中读取
+		function read(){
+			//1方法:点key名法
+			var nc=localStorage.getItem("用户名");
+			document.getElementById("nc").value=nc;
+			var mm=localStorage.getItem("密码");
+			document.getElementById("mm").value=mm;
+			//2方法：遍历key“数组”，先获取key名，再点名获取value
+			var i=0;
+			var key;
+			for(i=0;i<localStorage.length;i++){
+				key=localStorage.key(i);
+				console.log(key);
+				document.getElementsByTagName("input")[i].value=localStorage.getItem(key);
+			}
+		}
+	</script>
+</html>

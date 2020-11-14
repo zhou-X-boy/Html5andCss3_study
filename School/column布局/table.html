@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div#table51{
+				width: 60vw;
+				height: 60vh;
+				margin: 0 auto;
+				display: table;/* 将子元素作为tr */
+			}
+			div#table51>div{
+				display: table-row;/* 本元素作为tr */
+				height: 10%;
+				background-color: red;
+			}
+			div#table51>div:first-child{
+				background-color: aquamarine;
+				display: table-row;
+				height: 300px;
+				
+			}
+			div#table51>div>div{
+				display: table-cell;
+				color: white;
+				text-align: center;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="table51">
+			<div name="tr">
+				<div name="td">
+					51健康生活
+				</div>
+			</div>
+			<div name="tr">
+				<div name="td">
+					icon1
+				</div>
+				<div name="td">
+					icon2
+				</div>
+			</div>
+			<div name="tr">
+				<div name="td">
+					icon3
+				</div>
+				<div name="td">
+					icon4
+				</div>
+			</div>
+			<div name="tr">
+				<div name="td">
+					icon5
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

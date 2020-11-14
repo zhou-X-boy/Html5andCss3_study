@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta charset="utf-8">
+		<title>自适应网格分布</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: white;
+			}
+			div#all{
+				background-color: white;
+				width: 90%;
+				min-width: 600px;
+				max-width: 960px;
+				margin: 0 auto;
+				margin-top: 4vh;
+			}
+			div#header{
+				display: flex;/* 并排,默认水平并排 */
+				margin-top: 20px;
+			}
+			div#header div{
+				flex: grow;/* 均分,缩写版 */
+			}
+			
+			div#nav{
+				padding: 0.3rem;
+				box-sizing: border-box;
+				margin: 0 auto;
+			}
+			div#nav ul{
+				width: 600px;
+				height: 100%;
+				list-style: none;
+				display: grid;/* 网格布局 */
+				grid-template-rows: 50% 50% ;/* 每一行的高度 */
+				grid-template-columns: 100%;/* 每一列的宽度占比 */
+			    /* border: 1px solid black; */
+			    grid-row-gap: 1%;/* 行间距 */
+				
+			}
+			div#nav ul li:nth-child(1),
+			div#nav ul li:nth-child(2){
+				display: grid;
+				grid-template-rows: 100%;/* 每一行的高度占比 */
+				grid-template-columns: repeat(5,19%);/* repeat()重复相同的每一列的宽度占比 */
+				justify-content: space-around;/* 平均分布 */
+				grid-column-gap: 1px;/* 列间距 */
+				
+			}
+			div#nav ul li p{
+				height: 85%;
+				border: 1px red solid;
+				text-align: center;
+				background-color: rgb(255,128,128);
+				color: white;
+			}
+			
+			div#mid{
+				width: 600px;
+				margin-top: 4vh;
+				height: 120px;
+				/* border: 1px solid blue; */
+			    margin: 0 auto;
+			}
+			div#box1{
+				width: 100%;
+			}
+			div#box1-nav{
+				height: 100%;
+				column-count: 4;
+				column-width: 18%;
+				column-gap: 4%;
+				/* column-rule: 1px solid black; */
+			}
+			div#box1-nav div {
+				text-align: center;
+				border: 1px solid beige;
+			}
+			div#box1-nav div img{
+				width: 80%;
+				height: auto;
+				margin: 0 auto;
+			}
+			div#box1-nav div:nth-child(1){
+				box-ordinal-group: 4;
+			}
+			
+			div#box2{
+				width: 600px;
+				padding: 0.3rem;
+				box-sizing: border-box;
+				display: flex;
+				/* justify-content: space-between; *//* 两端对齐 */
+				justify-content: space-around;/* 平均分布 */
+			}
+			div#box2 dl{
+				width: 23%;
+				padding: 0.3rem;
+				box-sizing: border-box;
+				border: 1px solid beige;
+				text-align: center;
+			}
+			div#box2 dl dt{
+				width: 100%;
+			}
+			div#box2 dl dt img{
+				/* 图片自适应 */
+				width: 100%;
+				height: auto;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all">
+			<div id="header">
+				<div id="nav">
+					<ul>
+						<li>
+							<p>推荐</p>
+						    <p>男装</p>
+							<p>女装</p>
+							<p>男鞋</p>
+							<p>女鞋</p>
+						</li>
+						<li>
+						    <p>内衣</p>
+							<p>美妆</p>
+							<p>食品</p>
+							<p>家电</p>
+							<p>户外运动</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="mid">
+				<div id="box1">
+					<div id="box1-nav">
+						<div>
+							<img src="a.jpg"/>
+							<p>a1</p>
+						</div>
+						<div>
+							<img src="a.jpg"/>
+							<p>b1</p>
+						</div>
+						<div>
+							<img src="a.jpg"/>
+							<p>c1</p>
+						</div>
+						<div>
+							<img src="a.jpg"/>
+							<p>d1</p>
+						</div>
+					</div>
+				</div>
+				<div id="box2">
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg" />
+						</dt>
+						<dd>
+							<p>a2</p>
+						</dd>
+					</dl>
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg" />
+						</dt>
+						<dd>
+							<p>b2</p>
+							
+						</dd>
+					</dl>
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg" />
+						</dt>
+						<dd>
+							<p>c2</p>
+						</dd>
+					</dl>
+					<dl><!-- 有图有文 -->
+						<dt>
+							<img src="a.jpg" />
+						</dt>
+						<dd>
+							<p>d2</p>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

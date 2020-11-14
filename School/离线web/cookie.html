@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>0331 2班02 周文强 cookie保存、读取注册信息：一键一值key-value，固定key名保</title>
+	</head>
+	<body>
+		<form>
+		学  号：<input type="text" id="xh"/><br/>
+		用户名：<input type="text" id="nc"/><br/>
+		密  码：<input type="text" id="mm"/><br/>
+		地  址：<input type="text" id="dz"/><br/>
+		<input type="button" value="保存到cookie" onclick="save()"/><br/>
+		<input type="button" value="cookie读取" onclick="read()"/><br/>
+		</form>
+		<div>
+		  <h1 onclick="read()">显示信息</h1>
+		  <div id="show" style="width:260px;border:1px blue solid;"></div>
+		</div>
+	</body>
+	<script>
+	  //保存key-value，value必须是字符型
+	  function save(){
+	   //保存nc的key-value
+	  var xh=document.getElementById("xh").value;
+	  alert("xh="+xh+"; expires=Sun, 31 Dec 2020 12:00:00 UTC; path=/");
+	  document.cookie="xh="+xh+"; expires=Sun, 31 Dec 2020 12:00:00 UTC; path=/";  
+	
+	   var nc=document.getElementById("nc").value;
+	  document.cookie="nc="+nc+"; expires=Sun, 31 Dec 2020 12:00:00 UTC; path=/";  
+	
+	   var mm=document.getElementById("mm").value;
+	   var dz=document.getElementById("dz").value;
+	  document.cookie="mm="+mm+"; expires=Sun, 31 Dec 2020 12:00:00 UTC; path=/";  
+	
+	   var dz=document.getElementById("dz").value;
+	  document.cookie="dz="+dz+"; expires=Sun, 31 Dec 2020 12:00:00 UTC; path=/";  
+	
+	  }
+	
+	  //从localStorage中读取
+	  function read(){
+	  //遍历cookie
+	  var x=document.cookie;
+	  var str="";
+	  var a=x.split(";");
+	  for(var i=0;i<a.length;i++){
+		  if(a[i]!=""){
+			  str += ""+a[i]+"<br/>";
+		  }
+	  }
+	  document.getElementById("show").innerHTML=str;
+	  }
+	</script>
+</html>

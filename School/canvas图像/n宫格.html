@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>0324 2班02周文强 利用canvas+js将一个图片做成n宫格</title>
+		<style>  
+	        #pic{
+				width: 70px;
+				height: 70px;
+			}
+			#image{
+				width: 69px;
+				height: 69px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pic">
+			<img  id="image" src="b.jpg"/>
+		</div>
+		<canvas id="canvas" width="1000px" height="1000px">
+			
+		</canvas>
+		<script>
+			window.onload=function(){
+				var canvas=document.getElementById("canvas");
+				var ctx=canvas.getContext("2d");
+				var image=document.getElementById("image");
+			/*	//计算一下截取原图中的小图起点坐标和宽度高度
+				//计算第一小片的起点坐标和宽度高度，在原图中的，在画布中的
+				//第一行的第一列：起点坐标0,0；图像宽度/2；图像高度/2
+				ctx.drawImage(image,0,0,image.width/2,image.height/2,10,10,image.width,image.height);
+				//第一行的第二列：image.width/2,0;图像宽度/2；图像高度/2
+				//规律：第n列的x坐标：图像宽度/n*(列数-1)
+				ctx.drawImage(image,image.width/2,0,image.width/2,image.height/2,10*2+image.width,10,image.width,image.height);
+				//第二行的第一列：0,image.height/2
+				//规律：第n行的y坐标：图像高度/n*(行数-1)
+				ctx.drawImage(image,0,image.height/2,image.width/2,image.height/2,10,10*2+image.height,image.width,image.height);
+				//第二行的第二列:image.width/2,image.height/2
+				ctx.drawImage(image,image.width/2,image.height/2,image.width/2,image.height/2,10*2+image.width,10*2+image.height,image.width,image.height);*/
+				
+				//存在行列并重复的：两重循环
+				var i=1;//行
+				var j=1;//列
+				var n=3;//3宫格
+				var sp=10;//空白部分
+				for(i=1;i<n+1;i++){
+					for(j=1;j<n+1;j++){
+						ctx.drawImage(image,image.width/n*(j-1),image.height/n*(i-1),image.width/n,image.height/n,sp*j+image.width*(j-1),sp*i+image.height*(i-1),image.width,image.height);
+				    }
+				}
+			}
+		</script>
+	</body>
+</html>

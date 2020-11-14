@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>0303 2班02周文强 H5新增的结构标签+PC端的固定宽度</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: yellow;
+			}
+			#one{
+				width: 960px;
+				height: 800px;
+				background-color: white;
+				margin: 0px auto;
+			}
+			header{
+				border:1px red solid;
+			}
+			section#side{
+				float: left;
+				width: 320px;
+				height: 650px;
+				border: 1px blue solid;
+			}
+			main{
+				width:635px;
+				height: 650px;
+				border: 1px aqua solid;
+				float: right;
+			}
+			section#part1{
+				height: 100px;
+				overflow: auto;//区块滚动条效果
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			<header>
+				<!--网页页头或文章头部分，一般包含LOGO，导航，标题等-->
+				<div id=logo><img src="" alt="课程导读" title="课程导读"/></div>
+				<h1 hidden="true">课程导读</h1>
+				<nav>
+					<!--导航部分，可以是页面也可以是文章的-->
+					<a href="#">首页</a>
+					<a href="#">文本</a>
+					<a href="#">列表</a>
+					<a href="#">链接</a>
+					<a href="#">表格</a>
+					<a href="#">媒体</a>
+					<a href="#">内框架</a>
+				</nav>
+			</header>
+			<section id="side">
+				<!--section一般明确主题，有标题-->
+				<h2>课程分类目录</h2>
+				<!--页面的侧边栏或者是文章的附加部分，智能浏览器会认为这部分内容不重要用aside，如果认为也比较重要用section，-->
+				<nav>
+				    <menu>
+				        <li><a href="#">首页</a></li>
+				        <li><a href="#">文本</a></li>
+				        <li><a href="#">列表</a></li>
+				        <li><a href="#">链接</a></li>
+				        <li><a href="#">表格</a></li>
+				        <li><a href="#">媒体</a></li>
+				        <li><a href="#">内框架</a></li>
+			        </menu>
+				</nav>
+			</section>
+			<main>
+				<!--页面最重要的区域，一个网页只能一个，一般包含文章,区域，章节-->
+				<article id="new1">
+					<!--页面内容详细区域，可以是文章，评论，新闻等-->
+					<!--这里是一篇文章,它包括文章大小标题，作者照片，关键词，文章有多个章节，章节有小标题和内容-->
+					<header>
+						<hgroup>
+						<!--文章有大小标题，形成标题组，一般h1-h6-->
+						   <h2>如何在线课堂</h2>
+						   <h4>--从0303开始说起</h4>
+						   <h5>作者：匿名 发布时间<time>2020-03-03 09:11</time></h5>
+						</hgroup>
+						<nav>
+							<a href="#">在线</a>
+							<a href="#">课堂</a>
+							<a href="#">html1</a>
+						</nav>
+					</header>
+					<section id="part1">
+						<!--一篇文章的章节部分，有标题和内容-->
+						<h2>章节一:文本元素</h2>
+						<details>字符实体有三部分：一个符号 (&)，一个实体名称，以及一个分号 (;)。例如，要在 HTML 文档中显示小于号，可以输入“&lt;”</details>
+						<p><em>Html5</em>
+						   <strong>标准</strong></p>
+						<figure><img src="" alt="课程导读" title="课程导读"></figure>
+						<figcaption>课程导读</figcaption>
+						<p><mark>Html5</mark>
+						    <abbr>Web</abbr>
+						    <i>Html4.01</i>
+						    <sup>[1-2]</sup></p>
+						<p>目前html5技术标准增加的进度（进度条progress）为：<progress max="100" value="50">50</progress></p>
+					    <p>已阅读本篇文章点赞的人数(百分比meter)为：<meter min="0" max="100" value="80">80</meter></p>
+					</section>
+					<section>
+						<h2>章节二标题</h2>
+						<p>章节二内容</p>
+					</section>
+					<footer>
+						<!--文章页脚部分，一般包含作者的联系方式-->
+						<address>作者联系方式：QQ1111111</address>
+					</footer>
+				</article>
+				<article id="new2">
+					<!--页面内容详细区域，可以是文章，评论，新闻等-->
+					<!--这里是一篇文章,它包括文章大小标题，作者照片，关键词，文章有多个章节，章节有小标题和内容-->
+					<header>
+						<hgroup>
+						<!--文章有大小标题，形成标题组，一般h1-h6-->
+						   <h2>如何在线课堂</h2>
+						   <h4>--从0225开始说起</h4>
+						   <h5>作者：匿名 发布时间<time>2020-02-25 11:11</time></h5>
+						</hgroup>
+						<nav>
+							<a href="#">在线</a>
+							<a href="#">课堂</a>
+							<a href="#">html1</a>
+						</nav>
+					</header>
+					<section>
+						<!--一篇文章的章节部分，有标题和内容-->
+						<h2>章节一标题</h2>
+						<p>章节一内容</p>
+					</section>
+					<section>
+						<h2>章节二标题</h2>
+						<p>章节二内容</p>
+					</section>
+					<footer>
+						<!--文章页脚部分，一般包含作者的联系方式-->
+						<address>作者联系方式：QQ1111111</address>
+					</footer>
+				</article>
+				<article id="new3">
+					<!--页面内容详细区域，可以是文章，评论，新闻等-->
+					<!--这里是一篇文章,它包括文章大小标题，作者照片，关键词，文章有多个章节，章节有小标题和内容-->
+					<header>
+						<hgroup>
+						<!--文章有大小标题，形成标题组，一般h1-h6-->
+						   <h2>如何在线课堂</h2>
+						   <h4>--从0225开始说起</h4>
+						   <h5>作者：匿名 发布时间<time>2020-02-25 11:11</time></h5>
+						</hgroup>
+						<nav>
+							<a href="#">在线</a>
+							<a href="#">课堂</a>
+							<a href="#">html1</a>
+						</nav>
+					</header>
+					<section>
+						<!--一篇文章的章节部分，有标题和内容-->
+						<h2>章节一标题</h2>
+						<p>章节一内容</p>
+					</section>
+					<section>
+						<h2>章节二标题</h2>
+						<p>章节二内容</p>
+					</section>
+					<footer>
+						<!--文章页脚部分，一般包含作者的联系方式-->
+						<address>作者联系方式：QQ1111111</address>
+					</footer>
+				</article>
+			</main>
+			<footer>
+				<!--页面页脚部分，一般是友情链接，联系方式-->
+				<a href="#">友情链接</a>
+				<a href="#">友情链接</a>
+				<a href="#">友情链接</a>
+			</footer>
+		</div>
+	</body>
+</html>

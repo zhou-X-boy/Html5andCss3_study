@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#shang,#xia{
+				width: 300px;
+				height: 200px;
+			}
+			#shang{
+				border: 1px solid red;
+			}
+			#xia{
+				border: 1px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="shang">
+			<h1 id="wz" draggable="true" ondragstart="dragMove(event)">移动纯文字内容</h1><!-- 移动文字；移动元素h1 -->
+		</div>
+		<div id="xia" ondrop="drop(event)" ondragover="over(event)">
+		</div>
+		
+		<script>
+			function dragMove(event){
+				console.log("dragstart"+event.target);//显示事件源
+				//传送drag对象有关信息-纯文字内容
+				event.dataTransfer.setData("text/plain",event.target.innerHTML);
+			}
+			
+			function over(event){
+				//拖动过程中，避免拖拽对象的默认操作
+				console.log("dragover"+event.target)
+				event.preventDefault();
+			}
+			
+			function drop(event){
+				console.log("drop"+event.target);//显示放入对象事件源
+				
+				event.preventDefault();
+				//接收drag对象传送的信息
+				var txt=event.dataTransfer.getData("text/plain");
+				//alert(txt);
+				//文字移动
+				document.getElementById("xia").innerHTML=txt;
+				document.getElementById("wz").innerHTML="";
+			}
+		</script>
+	</body>
+</html>

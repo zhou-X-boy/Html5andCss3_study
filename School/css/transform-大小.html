@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div#pic{
+				width: 2000px;
+				height: 300px;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+			div#pic img:hover{
+				transform: scale(0.5);/*变换可多个方面：缩放，旋转，坐标*/
+				transition: transform 2s ease-in 1ms; /*过渡慢镜头*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pic">
+			<img src="images/lb1.jpeg"/>
+			<img src="images/lb2.jpeg"/>
+			<img src="images/lb3.jpeg"/>
+		</div>
+	</body>
+</html>

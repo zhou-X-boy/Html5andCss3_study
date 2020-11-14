@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div#d51{
+				width: 60vw;
+				height: 60vh;
+				/* border: 1px blue solid; */
+				margin: 0 auto;
+				text-align: center;
+			}
+			div#d51>div:first-child{
+				background-color: lightblue;
+				padding-top: 15%;
+			}
+			div#d51>div:nth-child(n+2){
+				background-color: red;
+				padding-top: 1%;
+			}
+			div#d51>div:nth-child(3){
+				background-color: green;
+			}
+			div#d51{
+				display: grid;/* 网格布局 */
+				grid-template-rows: 70% 10% 10% 10%;/* 定义各行高占比,从而体现行数 */
+			    grid-template-columns:50% 50%;/* 定义各列宽占比 */
+				grid-row-gap: 5px;/* 行间距 */
+				grid-column-gap: 5px;/* 列间距 */
+			}
+			div#d51>div:first-child,div#d51>div:last-child{
+				grid-column-start: 1;
+				grid-column-end: 3;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d51">
+			<div>
+				51健康生活
+			</div>
+			<div>
+				icon1
+			</div>
+			<div>
+				icon2
+			</div>
+			<div>
+				icon3
+			</div>
+			<div>
+				icon4
+			</div>
+			<div>
+				icon5
+			</div>
+		</div>
+	</body>
+</html>

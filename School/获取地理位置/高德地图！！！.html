@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>调用高德地图——引用高德地图的css和js</title>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>    
+    <script src="http://webapi.amap.com/maps?v=1.3&key=039c4ef10546c7b3bf1dded567002007"></script>
+<style>
+#mapholder {
+				width: 800px;
+				height: 600px;
+				float: left;
+				position: relative;
+			}
+</style>
+<script>
+        var info;
+        // 当页面加载完时调用该方法
+        function init() {
+            info = document.getElementById("info");
+        }
+        // 单击按钮调用单击时调用该方法
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                info.innerHTML = "您的浏览器不支持html5地理位置.";
+            }
+        }
+        // 当getCurrentPosition方法调用成功时调用该方法
+        function showPosition(position) {
+            var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=600x400&sensor=false";
+            // var img_url="http://mt0.google.cn/vt/lyrs=m@365000000&hl=zh-CN&gl=cn&x=" + latlon + "&zoom=14&size=600x400&&s=Galil";
+            //var img_url=http://api.map.baidu.com/api?v=2.0&ak=6yAoynmTPNlTBa8z1X4xxxx";
+            document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
+            alert("<img src='" + img_url + "'>");
+            info.innerHTML = "纬度：" + position.coords.latitude + " 经度" + position.coords.longitude;
+       var map=new AMap.Map('mapholder',{
+         resizeEnable:true
+        });
+        map.setZoom(13);
+        var x=position.coords.longitude;
+        var y=position.coords.latitude;
+        var center = new AMap.LngLat(x,y);
+        map.setCenter(center);}
+
+        // 当getCurrentPosition调用失败时调用该方法
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    loc.innerHTML = "用户拒绝地理位置请求."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    loc.innerHTML = "位置信息不可用."
+                    break;
+                case error.TIMEOUT:
+                    loc.innerHTML = "获取位置信息请求超时."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    loc.innerHTML = "一个未知错误发生."
+                    break;
+            }
+     }
+    </script>
+</head>
+
+<body onLoad="init();">
+<span>单击按钮获取位置信息:</span>
+<button onClick="getLocation()">获取</button>
+<div id="mapholder"></div>
+<div id="info"></div>
+</body>
+
+</html>

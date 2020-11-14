@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta name="HandheldFriendly" content="true" />
+		<title>0427 2班02周文强</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: white;
+			}
+			div#all{
+				width: 90vw;
+				height: 70vh;
+				margin: 0 auto;
+				text-align: center;
+			}
+			/* 手机端 */
+			@media screen and (max-width:599px) {
+				div#header{
+					height: 10vh;
+					background-color: orange;
+					margin-bottom: 0.5rem;
+				}
+				div#m>div{
+					height: 10vh;
+					background-color:blue;
+					margin-bottom: 0.5rem;
+				}
+				div#m>div#mid{
+					height: 30vh;
+				}
+				div#footer{
+					height: 10vh;
+					background-color:lightblue;
+				}
+			}
+			/* 平板端 */
+			@media screen and (max-width:959px) and (min-width:600px) {
+				div#header{
+					height: 10vh;
+					background-color: orange;
+					margin-bottom: 0.5rem;
+				}
+				div#m>div{
+					height: 50vh;
+					background-color:blue;
+					margin-bottom: 0.5rem;
+				}
+				div#left{
+					float: left;
+					width: 29%;
+					margin-right: 0.5rem;
+				}
+				div#mid{
+					float: left;
+					width:69%
+				}
+				div#right{
+					display: none;
+				}
+				div#m{
+					overflow: auto;
+				}
+				div#footer{
+					height: 10vh;
+					background-color:lightblue;
+				}
+			}
+			/* PC端 */
+			@media screen and (min-width:960px) {
+				div#header{
+					height: 10vh;
+					background-color: orange;
+					margin-bottom: 0.5rem;
+				}
+				div#m>div{
+					height: 50vh;
+					background-color:blue;
+					margin-bottom: 0.5rem;
+				}
+				div#left{
+					float: left;
+					width: 19%;
+				}
+				div#mid{
+					float: left;
+					width:60%;
+					margin-right:0.5rem;
+					margin-left: 0.5rem;
+				}
+				div#right{
+					width: 19%;
+					float: left;
+				}
+				div#m{
+					overflow: auto;
+				}
+				div#footer{
+					height: 10vh;
+					background-color:lightblue;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all">
+			<div id="header">
+			header	
+			</div>
+			<div id="m">
+				<div id="left">
+				left
+				</div>
+				<div id="mid">
+				mid
+				</div>
+				<div id="right">
+				right
+				</div>
+			</div>
+			<div id="footer">
+			footer	
+			</div>
+		</div>
+	</body>
+</html>

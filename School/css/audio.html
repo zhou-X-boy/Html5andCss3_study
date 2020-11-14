@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<style>
+  *{
+	margin:0;padding:0;
+}
+  div#music{
+	 width:824px;
+     height:470px;
+     background-image:url(images/bg.jpg);
+      position:relative;
+}
+
+  audio#au{
+	  width:244px;
+	  height:42px;
+      position:absolute;
+      bottom:142px;
+      left:274px;}
+
+  div#cd{
+	  width:240px;
+	  height:240px;
+	  background-image:url(images/cd.png);
+	  background-repeat:no-repeat;/*背景图重复，位置居中*/
+	  background-position:center center;
+	  background-size:240px 240px;
+	  position:absolute;
+	  top:44px;
+	  left:274px;
+	  opacity:0.2;
+  }
+ 
+ @keyframes xz  /*自定义动画@keyframes，可以用%，也可以用from to*/
+ {
+   from {transform:rotate(0deg);/*初始是旋转0度*/}
+   to {transform:rotate(360deg);/*终止是旋转0度*/}
+ }
+
+ div#cd:hover{
+  animation:xz 1s;/*类似于js中的setInterval，重复调用@keyframes中的动画名*/
+ }
+
+ div#gc{
+	 background-color:#66ccff;
+	 width:246px;
+	 height:180px;
+	 position:absolute;
+	 bottom:140px;
+	 right:44px;
+}
+</style>
+<body>
+ <div id="music">
+  <audio id="au" src="Truth of the Legend.mp3" controls>
+   no can play
+  </audio>
+  <div id="cd">
+  </div>
+  <div id="gc">
+  </div>
+ </div>
+</body>
+
+<script>
+ //侦听window的load事件，检测媒体文件到位
+ var au;
+ var gc;
+ var h=180;
+ window.onload=function(){ 
+    au=document.getElementById("au");
+    gc=document.getElementById("gc");
+    var timer;
+   //侦听audio有没有被单击“播放”
+    au.onplay=function(){
+        timer=setInterval(gcMove(gc),200);
+    }
+ }
+
+  function gcMove(gc){
+	  alert(gc);
+      //var h=gc.style.height;/*？？？？*/
+      //alert(h);
+      h=h-10;
+      gc.style.height=h+"px";
+  }
+</script>

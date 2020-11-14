@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+				#can{
+					border: 1px solid blue;
+				}
+				#jdt{
+					margin-top: -100px;
+					width: 500px;
+					text-align: center;
+					font-size: 30px;
+				}
+			</style>
+	</head>
+	<body>
+		<canvas id="can" width="500px" height="500px"></canvas>
+		<div id="jdt"></div>
+		<script>
+		window.onload=function(){
+			var ocan=document.getElementById("can")
+			var ctx=ocan.getContext("2d");
+			var odiv=document.getElementById("jdt")
+			var w=0;
+			var n=1;
+			odiv.innerHTML="当前进度："+Math.floor(w/500*100,2)+"%";
+			var timer;
+			timer=setInterval(function(){
+				if(n%2==1) ctx.fillStyle="blue";
+				else ctx.fillStyle="white";
+				ctx.save();
+				ctx.fillRect(w,0,10,10);
+				ctx.rotate(5*Math.PI/180);
+				w+=5;
+				n++;
+				odiv.innerHTML="当前进度："+Math.floor(w/500*100,2)+"%";
+				if(w==500){clearInterval(timer);}
+			},200);
+		}
+		</script>
+	</body>
+</html>

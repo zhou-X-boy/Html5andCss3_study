@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<title>0324 2班00刘刘 利用canvas+js画图像：将一个图像做成N*N的分片</title>
+<style>
+ #pic{width:187px;height:122px;
+      border:1px red solid;}
+ #image{width:187px;height:122px;}
+ #canvas{border:1px blue solid;}
+</style>
+<script>
+ //侦听window的load事件
+ window.onload=function(){
+  //1.
+  var canvas=document.getElementById("canvas");
+  //2.
+  var ctx=canvas.getContext("2d");
+  //3.
+  var image=document.getElementById("image");
+  //4.2*2，计算一下要截取的原图中的小图起点坐标和宽度高度
+  /*
+  //4.1计算第1小片的起点坐标和宽度高度：在原图中的，在画布中的
+  //4.1第1行第1列：0，0；图像宽度/2;图像高度/2；
+  ctx.drawImage(image,0,0,image.width/2,image.height/2,10,10,image.width,image.height);
+  //4.2 第1行第2列：image.width/2，0；图像宽度/2;图像高度/2；
+  //规律：第N列的x坐标：图像宽度/N*(列数-1)
+  ctx.drawImage(image,image.width/2,0,image.width/2,image.height/2,10*2+image.width,10,image.width,image.height);
+  //4.3 第2行第1列：0，image.height/2；图像宽度/2;图像高度/2；
+  //规律：第N列的x坐标：图像宽度/N*(列数-1)
+  //规律：第N行的y坐标：图像高度/N*(行数-1)
+  ctx.drawImage(image,0,image.height/2,image.width/2,image.height/2,10,10*2+image.height,image.width,image.height);
+   //4.4 第2行第2列：image.width/2，image.height/2；图像宽度/2;图像高度/2；
+  //规律：第i列的x坐标：图像宽度/N*(列数j-1)
+  //规律：第j行的y坐标：图像高度/N*(行数i-1)
+  ctx.drawImage(image,image.width/2,image.height/2,image.width/2,image.height/2,
+10*2+image.width,10*2+image.height,image.width,image.height);
+*/
+  
+  //*****存在行列并重复的：二重循环
+  //规律：第N列的x坐标：图像宽度/N*(列数-1)
+  //规律：第N行的y坐标：图像高度/N*(行数-1)
+  var i=1;//行
+  var j=1;//列
+  var n=3;//3宫格
+  var sp=5;//图片分片间留白
+  for(i=1;i<n+1;i++)
+  {
+     for(j=1;j<n+1;j++)
+     ctx.drawImage(image,image.width/n*(j-1),image.height/n*(i-1),image.width/n,image.height/n,
+sp*j+image.width*(j-1),sp*i+image.height*(i-1),image.width,image.height);
+
+  }
+}
+</script>
+<body>
+ <div id="pic">
+  <img src="a.jpg" id="image"/>
+ </div>
+ <canvas id="canvas" width="900px" height="500px" style="border:1px blue solid;">
+  替代文字2
+ </canvas>
+
+</body>
